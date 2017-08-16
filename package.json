@@ -1,0 +1,42 @@
+{
+  "author": {
+    "name": "WarbleSync",
+    "email": "warblesync@gmail.com"
+  },
+  "bugs": {
+    "url": "https://github.com/WarbleSync/nodebb-widget-bfstats-vrk/issues"
+  },
+  "dependencies": {
+    "lodash": "^4.17.4"
+  },
+  "description": "Battlefield stats plugin",
+  "devDependencies": {},
+  "directories": {},
+  "homepage": "https://github.com/WarbleSync/nodebb-widget-bfstats-vrk#readme",
+  "keywords": [
+    "nodebb",
+    "plugin",
+    "Battlefield",
+    "stats"
+  ],
+  "license": "MIT",
+  "main": "library.js",
+  "maintainers": [
+    {
+      "name": "warblesync",
+      "email": "warblesync@gmail.com"
+    }
+  ],
+  "name": "nodebb-widget-bfstats-vrk",
+  "nbbpm": {
+    "compatibility": "^1.0.0"
+  },
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/WarbleSync/nodebb-widget-bfstats-vrk.git"
+  },
+  "scripts": {},
+  "version": "1.0.0"
+}
