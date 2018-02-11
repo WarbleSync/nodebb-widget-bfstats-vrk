@@ -3,7 +3,7 @@
 var async =  module.parent.require('async'),
 fs = require('fs'),
 path = require('path'),
-templates = module.parent.require('templates.js'),
+templates = require('benchpressjs'),
 db = require.main.require('./src/database'),
 util = require("util"),
 players = [],
@@ -55,7 +55,7 @@ Widget.renderBFStatsWidget = function(widget, callback) {
 		function(callback){
 			db.getObjects(lookup_keys,function(err, results){
 				results.forEach(function(u){
-					if(typeof u !== 'undefined'){
+					if(typeof u !== 'undefined' && u !== null){
 						var player = {}
 						player.username = u.username
 						player.picture = u.picture
@@ -97,12 +97,17 @@ Widget.renderBFStatsWidget = function(widget, callback) {
 			'players': _.orderBy(players,['kd','skill'],['desc','desc'])
 		};
 		// console.dir(JSON.stringify(rep.players))
-
-	  var pre = ""+fs.readFileSync(path.resolve(__dirname,'./public/templates/bfstats.tpl'));
-		widget.html = templates.parse(pre, rep)
-		// callback(null, templates.parse(pre, rep));
-		// console.log(widget.data)
-		callback(null, widget);
+		var pre = ""+fs.readFileSync(path.resolve(__dirname,'./public/templates/bfstats.tpl'));
+		templates.compileRender(pre, rep)
+		.then(html => {
+			// console.log(html);
+			widget.html = html;
+			callback(null, widget);
+		}).
+		catch(err => {
+			console.log(err);
+			callback(err);
+		});
   })
 };
 
